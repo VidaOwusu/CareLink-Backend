@@ -1,13 +1,30 @@
 import express from "express";
 import mongoose from "mongoose";
+import expressOasGenerator from "@mickeymond/express-oas-generator";
+import cors from "cors";
 import { dbConnection } from "./config/db.js";
-import userRouter from "./routes/user_route.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import userRouter from "./routes/user_route.js";
+import profileRouter from "./routes/profile_route.js";
+import appointmentRouter from "./routes/appointment_route.js"
 
 const app = express();
 
+
+expressOasGenerator.handleResponses(app, {
+  alwaysServeDocs: true,
+  tags: [
+    "auth",
+    "profile",
+    "appointment",
+    
+  ],
+  mongooseModels: mongoose.modelNames(),
+});
+
 app.use(express.json());
+app.use(cors({ credentials: true, origin: "http://localhost:*" }));
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
@@ -22,7 +39,9 @@ app.use(
 
 
 
-app.use(userRouter)
+app.use(userRouter);
+app.use(profileRouter);
+app.use(appointmentRouter)
 
 dbConnection();
 

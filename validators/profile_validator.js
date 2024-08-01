@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const profileValidator = Joi.object({
     
     fullName:Joi.string(),

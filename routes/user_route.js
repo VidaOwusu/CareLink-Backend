@@ -4,14 +4,14 @@ import { getUser, getUsers, login, logout, signup } from "../controllers/user_co
 
 const userRouter = Router();
 
-userRouter.post('/api/auth/signup', signup);
+userRouter.post('/api/v1/auth/signup', signup);
 
-userRouter.post('/api/auth/login', login);
+userRouter.post('/api/v1/auth/login', login);
 
-userRouter.post('/api/auth/logout', isAuthenticated, logout)
+userRouter.post('/api/v1/auth/logout', isAuthenticated, logout)
 
-userRouter.get('/api', isAuthenticated, getUsers);
+userRouter.get('/api/v1/users', isAuthenticated, getUsers);
 
-userRouter.get('/api/auth/:email', getUser);
+userRouter.get('/api/v1/users/auth/:email', getUser);
 
 export default userRouter

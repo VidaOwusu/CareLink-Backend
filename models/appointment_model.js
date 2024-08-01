@@ -17,7 +17,7 @@ const appointmentSchema = new Schema({
                 "Dr. William Harris",
                  "Dr. Karen Clark, "   
         ], required: true} ,
-        reasonForappointment: {type: String, required: true},
+        reasonForAppointment: {type: String, required: true},
         appointmentDate: {type: Date, required: true},
         user: { type: Types.ObjectId, ref: "User" }
     },{

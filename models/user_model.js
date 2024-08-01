@@ -1,4 +1,4 @@
-import { model,  Schema } from "mongoose";
+import { model,  Schema, Types } from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 
@@ -7,7 +7,9 @@ const userSchema = new Schema({
     lastName: {type: String, required: true},
     email: {type: String, unique: true, required:true},
     password: {type: String, required: true},
-    phoneNumber: {type:String, required:true}
+    phoneNumber: {type:String},
+    profile: { type: Types.ObjectId, ref: "Profile" },
+    appointments: [{ type: Types.ObjectId, ref: "Appointment" }]
 }, {
     timestamps: true
 })

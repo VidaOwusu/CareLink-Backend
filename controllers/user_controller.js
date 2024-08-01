@@ -99,7 +99,7 @@ export const getUser = async (req, res, next) => {
   const options = { sort: { startDate: -1 } }
   const userDetails = await UserModel.findOne({ email }).select("-password")
     .populate({
-      path: "appointment",
+      path: "appointments",
       options,
     })
     .populate("profile")
