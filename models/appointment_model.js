@@ -19,6 +19,7 @@ const appointmentSchema = new Schema({
         ], required: true} ,
         reasonForAppointment: {type: String, required: true},
         appointmentDate: {type: Date, required: true},
+        status: { type: String, enum: ["scheduled", "completed", "cancelled"], default: "scheduled" },
         user: { type: Types.ObjectId, ref: "User" }
     },{
         timestamps:true

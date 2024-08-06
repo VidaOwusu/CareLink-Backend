@@ -5,7 +5,10 @@ import { profileValidator } from "../validators/profile_validator.js";
 
 export const addProfile = async (req, res, next) => {
     try {
-      const { error, value } = profileValidator.validate(req.body);
+      const { error, value } = profileValidator.validate({
+        ...req.body,
+        identificationDocument: req.file.filename,
+      });
       if (error) {
         return res.status(400).send(error.details[0].message);
       }
@@ -34,7 +37,10 @@ export const addProfile = async (req, res, next) => {
 
   export const updateProfile = async (req, res, next) => {
     try {
-      const { error, value } = profileValidator.validate(req.body,);
+      const { error, value } = profileValidator.validate({
+        ...req.body,
+        identificationDocument: req.file.filename,
+      });
       if (error) {
         return res.status(400).send(error.details[0].message);
       }

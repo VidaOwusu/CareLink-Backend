@@ -32,6 +32,9 @@ export const profileValidator = Joi.object({
     currentMedications: Joi.string(),
     identificationType: Joi.string(),
     identificationNumber: Joi.string(),
+    insuranceProvider: Joi.string(),
+    insurancePolicyNumber:Joi.string(),
+    identificationDocument: Joi.string(), 
     user: Joi.string()
 }
 );
@@ -43,6 +46,7 @@ export const appointmentValidator = Joi.object({
     doctors: Joi.string().required(),
     reasonForAppointment: Joi.string().required(),
     appointmentDate:Joi.date().required(),
+    status:Joi.string(),
     user: Joi.string()
     
 }

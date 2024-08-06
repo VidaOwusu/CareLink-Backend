@@ -15,6 +15,9 @@ export const profileValidator = Joi.object({
     currentMedications: Joi.string(),
     identificationType: Joi.string(),
     identificationNumber: Joi.string(),
+    insuranceProvider: Joi.string(),
+    insurancePolicyNumber:Joi.string(),
+    identificationDocument: Joi.string(),
     user: Joi.string()
 }
 );

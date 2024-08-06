@@ -5,9 +5,11 @@ import cors from "cors";
 import { dbConnection } from "./config/db.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import errorHandler from "errorhandler";
 import userRouter from "./routes/user_route.js";
 import profileRouter from "./routes/profile_route.js";
 import appointmentRouter from "./routes/appointment_route.js"
+import adminRouter from "./routes/admin_route.js";
 
 const app = express();
 
@@ -37,13 +39,18 @@ app.use(
     })
   );
 
-
+  dbConnection();
 
 app.use(userRouter);
 app.use(profileRouter);
-app.use(appointmentRouter)
+app.use(appointmentRouter);
+app.use(adminRouter)
 
-dbConnection();
+expressOasGenerator.handleRequests();
+app.use((req, res) => res.redirect('/api-docs/'));
+app.use(errorHandler({ log: false }));
+
+
 
 const PORT = 2000
 

@@ -9,7 +9,8 @@ const userSchema = new Schema({
     password: {type: String, required: true},
     phoneNumber: {type:String},
     profile: { type: Types.ObjectId, ref: "Profile" },
-    appointments: [{ type: Types.ObjectId, ref: "Appointment" }]
+    appointments: [{ type: Types.ObjectId, ref: "Appointment" }],
+    role: { type: String, enum: ['user', 'admin'], default: 'user' }// Role field
 }, {
     timestamps: true
 })

@@ -9,12 +9,15 @@ const profileSchema = new Schema({
     occupation: {type: String},
     emergencyContactName: {type: String, required: true},
     emergencyContactNumber: {type: String, required: true},
+    insuranceProvider: {type:String},
+    insurancePolicyNumber: {type: String},
     pastMedicalHistory: {type: String},
     familyMedicalHistory: {type: String},
     allergies: {type: String},
     currentMedications: {type:String},
     identificationType: {type: String, enum: ["Birth Certificate", "Ghana Card"]},
     identificationNumber: {type:String},
+    identificationDocument:{type:String},
     user: { type: Types.ObjectId, ref: "User" }
 }, {
     timestamps:true
