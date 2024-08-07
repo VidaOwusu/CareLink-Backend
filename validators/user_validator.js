@@ -61,6 +61,7 @@ export const appointmentValidator = Joi.object({
     doctors: Joi.string().required(),
     reasonForAppointment: Joi.string().required(),
     appointmentDate:Joi.date().required(),
+    appointmentTime: Joi.string(),
     status:Joi.string(),
     user: Joi.string()
     
