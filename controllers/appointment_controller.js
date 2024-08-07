@@ -90,7 +90,7 @@ export const addAppointment = async (req, res, next) => {
       if (!getAnAppointment) {
         return res.status(404).json({ message: "No appointment found" });
       }
-      res.status(200).json({ message: "This is  your appointment", getAnAppointment });
+      res.status(200).json({ message: "This is  your appointment", appointments: getAnAppointment });
    }
    catch (error) {
     next(error)
@@ -104,7 +104,7 @@ export const addAppointment = async (req, res, next) => {
       if (!getAllAppointments) {
         return res.status(404).json({ message: "No appointments found" });
       }
-      res.status(200).json({ message: "These are all your appointments", getAllAppointments });
+      res.status(200).json({ message: "These are all your appointments", appointments : getAllAppointments });
     } catch (error) {
       next(error);
     }

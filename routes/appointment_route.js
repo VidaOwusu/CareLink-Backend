@@ -4,14 +4,14 @@ import { addAppointment, deleteAppointment, getAllUserAppointments, getUserAppoi
 
 const appointmentRouter = Router();
 
-appointmentRouter.post('/api/v1/appointment', isAuthenticated, addAppointment);
+appointmentRouter.post('/appointment', isAuthenticated, addAppointment);
 
-appointmentRouter.patch('/api/v1/appointment/:id', isAuthenticated,updateAppointment);
+appointmentRouter.patch('/appointment/:id', isAuthenticated,updateAppointment);
 
-appointmentRouter.get('/api/v1/appointment/:id',isAuthenticated, getUserAppointment);
+appointmentRouter.get('/appointment/:id',isAuthenticated, getUserAppointment);
 
-appointmentRouter.delete('/api/v1/appointment/:id',isAuthenticated, deleteAppointment);
+appointmentRouter.delete('/appointment/:id',isAuthenticated, deleteAppointment);
 
-appointmentRouter.get('/api/v1/appointment',isAuthenticated, getAllUserAppointments);
+appointmentRouter.get('/appointment',isAuthenticated, getAllUserAppointments);
 
 export default appointmentRouter;

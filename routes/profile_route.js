@@ -5,10 +5,10 @@ import { remoteUpload } from "../middlewares/upload.js";
 
 const profileRouter = Router();
 
-profileRouter.post('/api/v1/profile',isAuthenticated, remoteUpload.single('identificationDocument'), addProfile);
+profileRouter.post('/profile',isAuthenticated, remoteUpload.single('identificationDocument'), addProfile);
 
-profileRouter.patch('/api/v1/profile/:id',isAuthenticated, remoteUpload.single('identificationDocument'), updateProfile);
+profileRouter.patch('/profile/:id',isAuthenticated, remoteUpload.single('identificationDocument'), updateProfile);
 
-profileRouter.get('/api/v1/profile', isAuthenticated, getUserProfile)
+profileRouter.get('/profile', isAuthenticated, getUserProfile)
 
 export default profileRouter;

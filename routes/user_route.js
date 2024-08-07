@@ -4,12 +4,12 @@ import { getUser, login, logout, signup } from "../controllers/user_controller.j
 
 const userRouter = Router();
 
-userRouter.post('/api/v1/auth/signup', signup);
+userRouter.post('/auth/signup', signup);
 
-userRouter.post('/api/v1/auth/login', login);
+userRouter.post('/auth/login', login);
 
-userRouter.post('/api/v1/auth/logout', isAuthenticated, logout)
+userRouter.post('/auth/logout', isAuthenticated, logout)
 
-userRouter.get('/api/v1/users/auth/:email', getUser);
+userRouter.get('/auth/:email', getUser);
 
 export default userRouter

@@ -42,10 +42,10 @@ app.use(
 
   dbConnection();
 
-app.use(userRouter);
-app.use(profileRouter);
-app.use(appointmentRouter);
-app.use(adminRouter);
+app.use("/api/v1", userRouter);
+app.use("/api/v1", profileRouter);
+app.use("/api/v1", appointmentRouter);
+app.use("/api/v1", adminRouter);
 
 expressOasGenerator.handleRequests();
 app.use((req, res) => res.redirect('/api-docs/'));
