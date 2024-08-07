@@ -12,6 +12,6 @@ appointmentRouter.get('/api/v1/appointment/:id',isAuthenticated, getUserAppointm
 
 appointmentRouter.delete('/api/v1/appointment/:id',isAuthenticated, deleteAppointment);
 
-// appointmentRouter.get('/api/v1/appointment',isAuthenticated, getAllUserAppointments);
+appointmentRouter.get('/api/v1/appointment',isAuthenticated, getAllUserAppointments);
 
 export default appointmentRouter;
