@@ -2,7 +2,8 @@ import { model, Schema, Types } from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 const profileSchema = new Schema({
-    fullName: {type:String},
+    firstName: {type:String},
+    lastName: {type:String},
     dateOfBirth: {type: String},
     sex: {type:String, enum: ["male", "female"]},
     address: {type: String},

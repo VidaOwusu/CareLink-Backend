@@ -33,7 +33,8 @@ export const updateUserValidator = Joi.object({
 
 export const profileValidator = Joi.object({
     
-    fullName:Joi.string(),
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
     sex: Joi.string(),
     dateOfBirth: Joi.date(),
     occupation: Joi.string(),
