@@ -10,8 +10,8 @@ appointmentRouter.patch('/api/v1/appointment/:id', isAuthenticated,updateAppoint
 
 appointmentRouter.get('/api/v1/appointment/:id',isAuthenticated, getUserAppointment);
 
-appointmentRouter.get('/api/v1/appointment',isAuthenticated, getAllUserAppointments);
-
 appointmentRouter.delete('/api/v1/appointment/:id',isAuthenticated, deleteAppointment);
+
+// appointmentRouter.get('/api/v1/appointment',isAuthenticated, getAllUserAppointments);
 
 export default appointmentRouter;

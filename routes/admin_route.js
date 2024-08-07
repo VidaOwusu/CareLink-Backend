@@ -9,10 +9,11 @@ const adminRouter = Router();
 adminRouter.post('/api/v1/setup-admin', setupAdmin);
 adminRouter.get('/api/v1/admin/doctors', isAuthenticated, isAdmin, getDoctors);
 adminRouter.get('/api/v1/admin/appointments', isAuthenticated, isAdmin, getAppointments);
-adminRouter.get('/api/v1/admin/users', isAuthenticated, isAdmin, getUsers);
 adminRouter.post('/api/v1/admin/users',isAuthenticated, isAdmin, createUser);
-adminRouter.patch('/api/v1/admin/users', isAuthenticated, isAdmin, updateUser);
-adminRouter.delete('/api/v1/admin/users', deleteUser)
+
+// adminRouter.get('/api/v1/admin/users', isAuthenticated, isAdmin, getUsers);
+// adminRouter.patch('/api/v1/admin/users', isAuthenticated, isAdmin, updateUser);
+// adminRouter.delete('/api/v1/admin/users', deleteUser)
 
 export default adminRouter;
 
