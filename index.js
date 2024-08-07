@@ -27,7 +27,7 @@ expressOasGenerator.handleResponses(app, {
 });
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:*" }));
+app.use(cors({ credentials: true, origin: "*" }));
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
