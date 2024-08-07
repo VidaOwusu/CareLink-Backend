@@ -19,7 +19,8 @@ if(findIfUserExist){
     return res.status(401).send('User has already signed up')
 }else{
     const hashedPassword = bcrypt.hashSync(value.password, 12)
-    value.password = hashedPassword
+    value.password = hashedPassword,
+     value.role = 'user', //Automatically set role to user
     console.log('val', value)
 
    const addUser = await UserModel.create(value)
@@ -46,7 +47,7 @@ export const login = async (req, res, next) => {
   const token = jwt.sign(
     {id: user.id, role: user.role}, 
     process.env.JWT_PRIVATE_KEY,
-    {expiresIn: '5h'}
+    {expiresIn: '12h'}
   );
  
  // Return response
@@ -113,26 +114,6 @@ export const getUser = async (req, res, next) => {
 };
 
 
-  
-  export const getUsers = async (req, res) => {
-   
-  
-    const email = req.query.email?.toLowerCase()
-    const phoneNumber = req.query.phoneNumber
-  
-    const filter = {};
-    if (email) {
-      filter.email = email;
-    }
-    if (phoneNumber) {
-      filter.phoneNumber = phoneNumber;
-    }
-  
-    const users = await UserModel.find(filter);
-  
-    return res.status(200).json({ users });
-  };
-  
   export const logout = async (req, res, next) => {
     try {
         //Destroy user section

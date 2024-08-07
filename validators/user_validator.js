@@ -16,6 +16,20 @@ export const loginValidator = Joi.object({
     phoneNumber: Joi.string(),
     
 });
+export const createUserValidator = Joi.object({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    phoneNumber: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(), 
+    role: Joi.string().required().valid('admin', 'manager'),
+});
+
+export const updateUserValidator = Joi.object({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    role: Joi.string().valid('admin', 'manager'),
+});
 
 export const profileValidator = Joi.object({
     
@@ -42,6 +56,7 @@ export const profileValidator = Joi.object({
 export const appointmentValidator = Joi.object({
     
     patient:Joi.string().required(),
+    relationship: Joi.string(),
     department: Joi.string().required(),
     doctors: Joi.string().required(),
     reasonForAppointment: Joi.string().required(),

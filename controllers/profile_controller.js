@@ -7,7 +7,7 @@ export const addProfile = async (req, res, next) => {
     try {
       const { error, value } = profileValidator.validate({
         ...req.body,
-        identificationDocument: req.file.filename,
+        identificationDocument: req?.file?.filename,
       });
       if (error) {
         return res.status(400).send(error.details[0].message);
@@ -39,7 +39,7 @@ export const addProfile = async (req, res, next) => {
     try {
       const { error, value } = profileValidator.validate({
         ...req.body,
-        identificationDocument: req.file.filename,
+        identificationDocument: req?.file?.filename,
       });
       if (error) {
         return res.status(400).send(error.details[0].message);
@@ -65,4 +65,13 @@ export const addProfile = async (req, res, next) => {
       next(error);
     }
   };
+
+  export const getUserProfile = async (req, res, next)=>{
+    try {
+      const UserProfile = await ProfileModel.findById(req.params.id)
+      res.status(200).send(UserProfile)
+    } catch (error) {
+      next(error)
+    }
+  }
   

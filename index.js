@@ -18,6 +18,7 @@ expressOasGenerator.handleResponses(app, {
   alwaysServeDocs: true,
   tags: [
     "auth",
+    "admin",
     "profile",
     "appointment",
     
@@ -44,7 +45,7 @@ app.use(
 app.use(userRouter);
 app.use(profileRouter);
 app.use(appointmentRouter);
-app.use(adminRouter)
+app.use(adminRouter);
 
 expressOasGenerator.handleRequests();
 app.use((req, res) => res.redirect('/api-docs/'));

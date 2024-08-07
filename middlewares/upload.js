@@ -1,6 +1,5 @@
 import multer from "multer";
 import { multerSaveFilesOrg } from "multer-savefilesorg";
-import 'dotenv/config'
 
 export const remoteUpload = multer({
     storage: multerSaveFilesOrg({
