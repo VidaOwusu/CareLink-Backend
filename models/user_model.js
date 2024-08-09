@@ -10,7 +10,9 @@ const userSchema = new Schema({
     phoneNumber: {type:String},
     profile: { type: Types.ObjectId, ref: "Profile" },
     appointments: [{ type: Types.ObjectId, ref: "Appointment" }],
-    role: { type: String, enum: ['user', 'admin'], default: 'user' }// Role field
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },// Role field
+    resetToken: { type: String },
+    resetTokenExpiresAt: { type: Date }
 }, {
     timestamps: true
 })

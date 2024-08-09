@@ -10,7 +10,7 @@ import userRouter from "./routes/user_route.js";
 import profileRouter from "./routes/profile_route.js";
 import appointmentRouter from "./routes/appointment_route.js"
 import adminRouter from "./routes/admin_route.js";
-
+import { passwordRouter } from "./routes/resetPassword_route.js";
 const app = express();
 
 
@@ -46,6 +46,7 @@ app.use("/api/v1", userRouter);
 app.use("/api/v1", profileRouter);
 app.use("/api/v1", appointmentRouter);
 app.use("/api/v1", adminRouter);
+app.use("/api/v1", passwordRouter)
 
 expressOasGenerator.handleRequests();
 app.use((req, res) => res.redirect('/api-docs/'));
