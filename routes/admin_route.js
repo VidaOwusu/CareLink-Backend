@@ -7,8 +7,9 @@ import { isAuthenticated, isAdmin } from '../middlewares/auth.js';
 const adminRouter = Router();
 adminRouter.get('/admin/doctors', isAuthenticated, isAdmin, getDoctors);
 adminRouter.get('/admin', isAuthenticated, isAdmin, getAppointments);
-adminRouter.post('/admin/users',isAuthenticated, isAdmin, createUser);
 
+
+// adminRouter.post('/admin/users',isAuthenticated, isAdmin, createUser);
 // adminRouter.get('/api/v1/admin/users', isAuthenticated, isAdmin, getUsers);
 // adminRouter.patch('/api/v1/admin/users', isAuthenticated, isAdmin, updateUser);
 // adminRouter.delete('/api/v1/admin/users', deleteUser)

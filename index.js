@@ -11,6 +11,9 @@ import profileRouter from "./routes/profile_route.js";
 import appointmentRouter from "./routes/appointment_route.js"
 import adminRouter from "./routes/admin_route.js";
 import { passwordRouter } from "./routes/resetPassword_route.js";
+import { restartServer } from "./config/restart_server.js";
+
+
 const app = express();
 
 
@@ -40,7 +43,10 @@ app.use(
     })
   );
 
-  dbConnection();
+  app.get("/api/v1/health", (req, res) => {
+    res.json({ status: "UP" });
+  });
+
 
 app.use("/api/v1", userRouter);
 app.use("/api/v1", profileRouter);
@@ -56,7 +62,21 @@ app.use(errorHandler({ log: false }));
 
 const PORT = 2000
 
-app.listen(PORT, ()=>{
-    console.log(`App is listening on port ${PORT}`)
-})
+const reboot = async () => {
+  setInterval(restartServer, process.env.INTERVAL);
+};
+
+dbConnection()
+  .then(() => {
+    app.listen(PORT, () => {
+      reboot().then(() => {
+        console.log(`Server Restarted`);
+      });
+      console.log(`Server is connected to Port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    process.exit(-1);
+  });
 

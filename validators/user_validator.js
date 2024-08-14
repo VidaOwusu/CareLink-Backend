@@ -19,7 +19,7 @@ export const loginValidator = Joi.object({
 export const createUserValidator = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
-    phoneNumber: Joi.string().required(),
+    phoneNumber: Joi.string(),
     email: Joi.string().email().required(),
     password: Joi.string().required(), 
     role: Joi.string().required().valid('admin', 'manager'),
@@ -33,10 +33,12 @@ export const updateUserValidator = Joi.object({
 
 export const profileValidator = Joi.object({
     
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    firstName: Joi.string(),
+    lastName: Joi.string(),
     sex: Joi.string(),
     dateOfBirth: Joi.date(),
+    phoneNumber: Joi.string(),
+    email: Joi.string(),
     occupation: Joi.string(),
     address: Joi.string(),
     emergencyContactName: Joi.string(),

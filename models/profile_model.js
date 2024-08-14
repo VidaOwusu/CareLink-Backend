@@ -6,6 +6,8 @@ const profileSchema = new Schema({
     lastName: {type:String},
     dateOfBirth: {type: String},
     sex: {type:String, enum: ["male", "female"]},
+    email: {type:String},
+    phoneNumber: {type:String},
     address: {type: String},
     occupation: {type: String},
     emergencyContactName: {type: String, required: true},

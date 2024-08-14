@@ -8,6 +8,8 @@ export const profileValidator = Joi.object({
     dateOfBirth: Joi.date(),
     occupation: Joi.string(),
     address: Joi.string(),
+    phoneNumber: Joi.string(),
+    email: Joi.string(),
     emergencyContactName: Joi.string(),
     emergencyContactNumber: Joi.string(),
     pastMedicalHistory: Joi.string(),
