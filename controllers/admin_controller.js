@@ -56,7 +56,7 @@ export const createUser = async (req, res, next) => {
 
     // Send email to user
     await mailTransport.sendMail({
-      from: "Health Care Support <fromMomo.com>",
+      from: "CareLink Hospital <fromMomo.com>",
       to: value.email,
       subject: "User Account Created!",
       text: `Dear user,\n\nA user account has been created for you with the following credentials.\n\nfirstName: ${value.firstName}\n\nlastName: ${value.lastName}\n\nEmail: ${value.email}\n\npassword: ${value.password}\n\nRole: ${value.role || 'user'}\n\nThank you!`,

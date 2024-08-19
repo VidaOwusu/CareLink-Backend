@@ -16,7 +16,7 @@ export const addAppointment = async (req, res, next) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-
+console.log(id)
     // Create the appointment
     const newAppointment = await AppointmentModel.create({
       ...value,
@@ -29,7 +29,7 @@ export const addAppointment = async (req, res, next) => {
 
     // Send email to user with appointment details
     await mailTransport.sendMail({
-      from: "Health Care Support <fromMomo.com>",
+      from: "CareLink Hospital<fromMomo.com>",
       to: user.email, // Send email to the user's registered email
       subject: "Appointment Scheduled!",
       text: `Dear ${user.firstName} ${user.lastName},
@@ -87,7 +87,7 @@ export const updateAppointment = async (req, res, next) => {
 
     // Send email to user with updated appointment details
     await mailTransport.sendMail({
-      from: "Health Care Support <fromMomo.com>",
+      from: "CareLink Hospital <fromMomo.com>",
       to: user.email, // Send email to the user's registered email
       subject: "Appointment Updated!",
       text: `Dear ${user.firstName} ${user.lastName},
@@ -141,7 +141,7 @@ Health Care Support Team`
   
       // Send email to user about the cancellation
       await mailTransport.sendMail({
-        from: "Health Care Support <fromMomo.com>",
+        from: "CareLink Hospital <fromMomo.com>",
         to: user.email,
         subject: "Appointment Cancelled",
         text: `Dear ${user.firstName} ${user.lastName},
@@ -200,6 +200,50 @@ export const getAllUserAppointments = async (req, res, next) => {
     next(error);
   }
 };
+
+// export const addAppointment = async (req, res, next) => {
+//   try {
+//     console.log("Function reached");
+
+//     // Validate the request body
+//     const { error, value } = appointmentValidator.validate(req.body);
+//     if (error) {
+//       console.log("Validation error:", error.details[0].message);
+//       return res.status(400).send(error.details[0].message); // Send error response and return to prevent further code execution
+//     }
+
+//     // Get user ID from session or request
+//     const id = req.session?.user?.id || req?.user?.id;
+//     console.log("Retrieved User ID:", id);
+
+//     const user = await UserModel.findById(id);
+//     if (!user) {
+//       console.log("User not found");
+//       return res.status(404).send("User not found"); // Send error response and return
+//     }
+
+//     // Create the appointment
+//     const newAppointment = await AppointmentModel.create({
+//       ...value,
+//       user: id,
+//     });
+
+    // Add the appointment to the user's appointments list
+  //   user.appointments.push(newAppointment._id);
+  //   await user.save();
+
+  //   // Send success response
+  //   return res.status(201).json({ message: "Appointment added successfully", appointment: newAppointment });
+    
+  // } catch (error) {
+//     console.error("Error adding appointment:", error);
+//     if (!res.headersSent) { // Check if headers have already been sent
+//       return res.status(500).json({ error: "Internal Server Error" });
+//     }
+//   }
+// };
+
+
 
 
 
