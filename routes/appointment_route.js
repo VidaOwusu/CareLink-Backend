@@ -4,7 +4,7 @@ import { addAppointment, deleteAppointment, getAllUserAppointments, getUserAppoi
 
 const appointmentRouter = Router();
 
-appointmentRouter.post('/appointment', isAuthenticated, addAppointment);
+appointmentRouter.post('/appointment', addAppointment);
 
 appointmentRouter.patch('/appointment/:id', isAuthenticated,updateAppointment);
 
