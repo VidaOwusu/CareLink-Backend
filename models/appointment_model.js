@@ -3,9 +3,15 @@ import { toJSON } from "@reis/mongoose-to-json";
 
 
 const appointmentSchema = new Schema({
+    
         patient: {type:String, enum: ["personal", "someone else"], required: true},
+
         relationship: {type:String},
-        department: {type:String, enum: ["General", "Dental", "Cardiology", "Obstetrics and Gynecology","Neurology", "Emergency", "Pediatrics", "Ophthalmology"], required: true},
+
+        department: {type:String, enum: ["General", "Dental", "Cardiology", 
+        "Obstetrics and Gynecology","Neurology", "Emergency", "Pediatrics", 
+        "Ophthalmology"], required: true},
+
         doctors: {type: String, enum:[
            " Dr Yaw Sekyi",
             "Dr Micheal Brown",
